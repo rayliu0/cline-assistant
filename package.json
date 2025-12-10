@@ -1,0 +1,125 @@
+{
+  "name": "cline-assistant",
+  "displayName": "AI 代码助手",
+  "description": "支持智谱AI和DeepSeek的代码助手",
+  "version": "0.1.0",
+  "publisher": "rayliu",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "icon": "resources/icon.png",
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiAssistant.openChat",
+        "title": "打开 AI 助手"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-assistant-sidebar",
+          "title": "AI 助手",
+          "icon": "resources/icon.png"
+        }
+      ]
+    },
+    "views": {
+      "ai-assistant-sidebar": [
+        {
+          "type": "webview",
+          "id": "aiAssistant.chatView",
+          "name": "对话",
+          "icon": "resources/icon.png"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI 代码助手",
+      "properties": {
+        "aiAssistant.provider": {
+          "type": "string",
+          "default": "zhipu",
+          "enum": [
+            "zhipu",
+            "deepseek"
+          ],
+          "description": "AI 提供商"
+        },
+        "aiAssistant.zhipu.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "智谱 API Key"
+        },
+        "aiAssistant.zhipu.model": {
+          "type": "string",
+          "default": "glm-4-plus",
+          "enum": [
+            "glm-4-plus",
+            "glm-4",
+            "glm-4-air"
+          ],
+          "description": "智谱模型"
+        },
+        "aiAssistant.deepseek.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "DeepSeek API Key"
+        },
+        "aiAssistant.deepseek.model": {
+          "type": "string",
+          "default": "deepseek-chat",
+          "enum": [
+            "deepseek-chat",
+            "deepseek-coder"
+          ],
+          "description": "DeepSeek 模型"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist && rm -rf .out",
+    "vscode:prepublish": "npm run compile",
+    "compile": "npm run clean && tsc -p ./ && npm run compile:webview",
+    "compile:webview": "vite build",
+    "watch": "tsc -watch -p ./",
+    "watch:webview": "vite build --watch",
+    "package": "vsce package",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.3",
+    "@types/jest": "^30.0.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.10.2",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/uuid": "^10.0.0",
+    "@types/vscode": "^1.80.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vscode/vsce": "^3.7.1",
+    "chai": "^6.2.1",
+    "esbuild": "^0.27.1",
+    "jest": "^30.2.0",
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.7"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "uuid": "^13.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rayliu0/cline-assistant.git"
+  },
+  "keywords": [],
+  "author": "410168903@qq.com",
+  "license": "ISC"
+}
