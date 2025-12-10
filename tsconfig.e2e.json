@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2020",
+    "outDir": "out/test/suite",
+    "lib": ["ES2020"],
+    "sourceMap": true,
+    "rootDir": "tests/e2e",
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "types": ["node", "@types/vscode", "@types/mocha"]
+  },
+  "include": ["tests/e2e/**/*"],
+  "exclude": ["node_modules"]
+}

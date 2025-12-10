@@ -11,15 +11,15 @@ export function activate(context: vscode.ExtensionContext) {
   // 注册 Webview
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(
-      'zhipu.chatView',
+      'aiAssistant.chatView',
       chatProvider
     )
   );
   
   // 注册命令
   context.subscriptions.push(
-    vscode.commands.registerCommand('zhipu.openChat', () => {
-      vscode.commands.executeCommand('zhipu.chatView.focus')
+    vscode.commands.registerCommand('aiAssistant.openChat', () => {
+      vscode.commands.executeCommand('aiAssistant.chatView.focus')
     })
   );
 }

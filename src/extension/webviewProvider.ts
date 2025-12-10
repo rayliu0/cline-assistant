@@ -140,7 +140,7 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
    * 处理用户消息
    * 支持流式响应和工具调用
    */
-  private async handleUserMessage(content: string) {
+  public async handleUserMessage(content: string) {
     console.log('1. 用户消息:', content);
     console.log('2. AI Client:', !!this.aiClient);
     console.log('3. Provider:', this.currentProvider);
@@ -187,6 +187,7 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
 
       // 解析并执行工具调用
       const toolCalls = this.parseToolCalls(assistantContent);
+      debugger
       if (toolCalls.length > 0) {
         await this.executeToolCalls(toolCalls);
       }

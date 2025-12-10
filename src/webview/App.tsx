@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
-// @ts-ignore: allow importing CSS without a module declaration (or add "declare module '*.css';" to your typings)
-import './App.css'
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import './App.css';
 
 // 定义消息类型
 interface Message {

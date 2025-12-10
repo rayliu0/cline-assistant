@@ -185,6 +185,7 @@ class ChatViewProvider {
             }
             // 解析并执行工具调用
             const toolCalls = this.parseToolCalls(assistantContent);
+            debugger;
             if (toolCalls.length > 0) {
                 await this.executeToolCalls(toolCalls);
             }

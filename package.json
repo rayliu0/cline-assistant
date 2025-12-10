@@ -7,9 +7,13 @@
   "engines": {
     "vscode": "^1.80.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "icon": "resources/icon.png",
-  "activationEvents": ["onStartupFinished"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension/extension.js",
   "contributes": {
     "commands": [
@@ -51,7 +55,7 @@
         },
         "aiAssistant.zhipu.apiKey": {
           "type": "string",
-          "default": "",
+          "default": "9ba9dd5ad5db4660a14bdbfca6117223",
           "description": "智谱 API Key"
         },
         "aiAssistant.zhipu.model": {
@@ -89,23 +93,38 @@
     "watch": "tsc -watch -p ./",
     "watch:webview": "vite build --watch",
     "package": "vsce package",
-    "test": "node ./out/test/runTest.js"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest --testPathPatterns=\"extension|webview\"",
+    "test:integration": "jest --testPathPatterns=\"integration\"",
+    "test:e2e": "npm run compile && node ./out/test/runTest.js"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/chai": "^5.2.3",
     "@types/jest": "^30.0.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.10.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@types/sinon": "^21.0.0",
     "@types/uuid": "^10.0.0",
     "@types/vscode": "^1.80.0",
     "@vitejs/plugin-react": "^5.1.2",
+    "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^3.7.1",
     "chai": "^6.2.1",
     "esbuild": "^0.27.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "nock": "^14.0.10",
     "sharp": "^0.34.5",
+    "sinon": "^21.0.0",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.9.3",
     "vite": "^7.2.7"
   },

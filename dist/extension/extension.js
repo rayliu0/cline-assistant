@@ -43,10 +43,10 @@ function activate(context) {
     const chatProvider = new webviewProvider_1.ChatViewProvider(context.extensionUri, context);
     debugger;
     // 注册 Webview
-    context.subscriptions.push(vscode.window.registerWebviewViewProvider('zhipu.chatView', chatProvider));
+    context.subscriptions.push(vscode.window.registerWebviewViewProvider('aiAssistant.chatView', chatProvider));
     // 注册命令
-    context.subscriptions.push(vscode.commands.registerCommand('zhipu.openChat', () => {
-        vscode.commands.executeCommand('zhipu.chatView.focus');
+    context.subscriptions.push(vscode.commands.registerCommand('aiAssistant.openChat', () => {
+        vscode.commands.executeCommand('aiAssistant.chatView.focus');
     }));
 }
 function deactivate() {
